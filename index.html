@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAGARIBI HOKKAIDO 2026</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;600;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset CSS */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
+            background-color: #0a0a0a; /* ダークブラック */
+            color: #ffffff; /* ホワイト */
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .text-center { text-align: center; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-4 { gap: 1rem; }
+        .gap-8 { gap: 2rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-8 { margin-top: 2rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .shadow-md { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .font-bold { font-weight: 700; }
+        .font-extrabold { font-weight: 800; }
+        .leading-tight { line-height: 1.25; }
+
+        /* Keyframe Animations */
+        @keyframes flame-dance-1 {
+            0%, 100% {
+                transform: translateY(0) scaleY(1) scaleX(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-80px) scaleY(1.2) scaleX(0.95);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-120px) scaleY(1.4) scaleX(0.9);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-60px) scaleY(1.1) scaleX(0.97);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes flame-dance-2 {
+            0%, 100% {
+                transform: translateY(0) scaleY(1) scaleX(1) skewX(0deg);
+                opacity: 0.7;
+            }
+            20% {
+                transform: translateY(-60px) scaleY(1.15) scaleX(0.93) skewX(-3deg);
+                opacity: 0.9;
+            }
+            45% {
+                transform: translateY(-100px) scaleY(1.3) scaleX(0.88) skewX(3deg);
+                opacity: 1;
+            }
+            70% {
+                transform: translateY(-50px) scaleY(1.08) scaleX(0.96) skewX(-2deg);
+                opacity: 0.75;
+            }
+        }
+
+        @keyframes flame-dance-3 {
+            0%, 100% {
+                transform: translateY(0) scaleY(1) scaleX(1) skewX(0deg);
+                opacity: 0.8;
+            }
+            15% {
+                transform: translateY(-40px) scaleY(1.1) scaleX(0.95) skewX(4deg);
+                opacity: 0.95;
+            }
+            35% {
+                transform: translateY(-75px) scaleY(1.25) scaleX(0.9) skewX(-5deg);
+                opacity: 1;
+            }
+            55% {
+                transform: translateY(-55px) scaleY(1.15) scaleX(0.92) skewX(3deg);
+                opacity: 0.9;
+            }
+            80% {
+                transform: translateY(-30px) scaleY(1.05) scaleX(0.97) skewX(-2deg);
+                opacity: 0.85;
+            }
+        }
+
+        @keyframes particles-rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-500px) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scaleY(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scaleY(1.15);
+            }
+        }
+
+        /* 修正版: 出現アニメーション（writeIn） */
+        /* filter: blur を削除し、最初から輪郭を保ちます */
+        @keyframes writeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* 修正版: 燃焼ループアニメーション（letterGlow） */
+        /* 文字自体は白く保ち、影（text-shadow）だけで炎を表現します */
+        @keyframes letterGlow {
+            0%, 100% { 
+                /* 穏やかな炎 */
+                text-shadow: 
+                    0 0 10px rgba(255, 107, 53, 0.8),
+                    0 0 20px rgba(255, 69, 0, 0.4);
+            }
+            50% {
+                /* 燃え上がる炎（少し広がる） */
+                text-shadow: 
+                    0 0 15px rgba(255, 165, 81, 1),    /* 中心に近い明るいオレンジ */
+                    0 0 30px rgba(255, 107, 53, 0.8),  /* 中間の赤オレンジ */
+                    0 0 50px rgba(255, 0, 0, 0.4);     /* 外側の赤い光 */
+            }
+        }
+
+        /* ロゴ全体のグローエフェクト（背景の炎と同期） */
+        @keyframes logoFlameGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 18px rgba(255, 107, 53, 0.7))
+                        drop-shadow(0 0 8px rgba(255, 107, 53, 0.5)); /* 輪郭を少し強調 */
+            }
+            50% {
+                filter: drop-shadow(0 0 45px rgba(255, 165, 81, 1.0))
+                        drop-shadow(0 0 20px rgba(255, 107, 53, 0.9)); /* ピーク時に強調 */
+            }
+        }
+
+
+        @keyframes timelineBorderPulse {
+            0%, 100% { border-color: #ff6b35; } /* オレンジレッド */
+            50% { border-color: #ffa551; } /* ゴールデンオレンジ */
+        }
+
+        /* カウントダウン用スタイル */
+        .countdown-container {
+            margin: 2rem 0 3rem 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .countdown-title {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            color: #ff8c42;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* 上揃えでレイアウト崩れ防止 */
+            gap: 1rem;
+            font-family: 'Noto Sans JP', sans-serif; /* 数字は等幅に近いフォントで */
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #ffffff;
+            /* 炎のようなグロー効果 */
+            text-shadow: 
+                0 0 10px rgba(255, 107, 53, 0.8),
+                0 0 20px rgba(255, 69, 0, 0.4);
+            min-width: 3.5rem; /* 数字が変動しても幅を固定 */
+        }
+
+        .time-label {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 0.5rem;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .time-separator {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-top: 0.2rem;
+            animation: blink 1s infinite;
+        }
+
+        /* 点滅アニメーション */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 50% 100%, #1a0a05 0%, #0a0a0a 60%, #000000 100%); /* Base background */
+            z-index: 1;
+        }
+
+        .fire-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80%; /* Adjust height to control flame visibility */
+            pointer-events: none;
+            z-index: 0; /* Behind content */
+        }
+
+        /* Common styles for fire layers */
+        .fire-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            will-change: transform, opacity, filter;
+        }
+
+        /* Flame Layer 1 - 大きな炎の形状 */
+        .fire-layer-1 {
+            background: 
+                radial-gradient(ellipse 400px 600px at 20% 100%, rgba(255, 69, 0, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse 500px 700px at 50% 100%, rgba(255, 102, 0, 0.5) 0%, transparent 55%),
+                radial-gradient(ellipse 400px 600px at 80% 100%, rgba(255, 136, 0, 0.4) 0%, transparent 50%);
+            animation: flame-dance-1 3s ease-in-out infinite;
+            filter: blur(40px);
+        }
+
+        /* Flame Layer 2 - 中間の炎の揺らぎ */
+        .fire-layer-2 {
+            background: 
+                radial-gradient(ellipse 350px 550px at 15% 100%, rgba(255, 102, 0, 0.5) 0%, transparent 45%),
+                radial-gradient(ellipse 450px 650px at 45% 100%, rgba(255, 136, 0, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse 300px 500px at 70% 100%, rgba(255, 170, 0, 0.5) 0%, transparent 45%),
+                radial-gradient(ellipse 350px 550px at 88% 100%, rgba(255, 102, 0, 0.4) 0%, transparent 45%);
+            animation: flame-dance-2 2.5s ease-in-out infinite;
+            animation-delay: -0.7s;
+            filter: blur(30px);
+        }
+
+        /* Flame Layer 3 - 細かい炎の動き */
+        .fire-layer-3 {
+            background: 
+                radial-gradient(ellipse 250px 400px at 10% 100%, rgba(255, 136, 0, 0.6) 0%, transparent 40%),
+                radial-gradient(ellipse 200px 350px at 30% 100%, rgba(255, 170, 0, 0.7) 0%, transparent 38%),
+                radial-gradient(ellipse 280px 420px at 52% 100%, rgba(255, 204, 0, 0.6) 0%, transparent 42%),
+                radial-gradient(ellipse 220px 380px at 72% 100%, rgba(255, 170, 0, 0.65) 0%, transparent 40%),
+                radial-gradient(ellipse 250px 400px at 90% 100%, rgba(255, 136, 0, 0.5) 0%, transparent 40%);
+            animation: flame-dance-3 2s ease-in-out infinite;
+            animation-delay: -1.2s;
+            filter: blur(20px);
+        }
+
+        /* 火の粉パーティクル効果 */
+        .fire-particles {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            will-change: transform, opacity;
+        }
+
+        .fire-particles::before,
+        .fire-particles::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            height: 60%;
+            background-image: 
+                radial-gradient(circle 3px at 15% 90%, rgba(255, 170, 0, 0.8) 0%, transparent 100%),
+                radial-gradient(circle 2px at 35% 85%, rgba(255, 204, 0, 0.9) 0%, transparent 100%),
+                radial-gradient(circle 4px at 48% 88%, rgba(255, 136, 0, 0.7) 0%, transparent 100%),
+                radial-gradient(circle 2px at 62% 92%, rgba(255, 204, 0, 0.85) 0%, transparent 100%),
+                radial-gradient(circle 3px at 78% 86%, rgba(255, 170, 0, 0.75) 0%, transparent 100%),
+                radial-gradient(circle 2px at 88% 90%, rgba(255, 204, 0, 0.8) 0%, transparent 100%);
+            animation: particles-rise 4s linear infinite;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .fire-particles::after {
+            animation-delay: -2s;
+        }
+
+        /* グロー効果（光の拡散）*/
+        .fire-glow {
+            position: absolute;
+            bottom: -10%;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: radial-gradient(ellipse 80% 100% at 50% 100%, rgba(255, 102, 0, 0.3) 0%, transparent 60%);
+            animation: glow-pulse 2s ease-in-out infinite;
+            filter: blur(60px);
+            will-change: transform, opacity, filter;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 1rem;
+        }
+        .organizer-pretitle {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 1.3rem;
+            color: #ffa551;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 修正版: ロゴのベーススタイル */
+        .logo { /* This is the h1 container */
+            font-family: 'Noto Sans JP', sans-serif; /* NEW FONT for container */
+            font-weight: 900; /* 極太で力強く */
+            text-align: center;
+            line-height: 0.9; /* 行間を詰めて塊感を出す */
+            margin: 0; /* Override existing margin-bottom */
+            padding: 2rem 0; /* Add padding */
+            
+            /* 【変更点】文字色を白に固定、グラデーション背景とクリップを削除 */
+            color: #ffffff; 
+            background: none; 
+            -webkit-text-fill-color: initial;
+            background-clip: border-box;
+
+            /* Base glow for the overall logo container (animated by logoFlameGlow) */
+            filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.6));
+            
+            will-change: filter, text-shadow;
+            animation: logoFlameGlow 3s ease-in-out infinite;
+            animation-delay: 2.0s; /* Start after writeIn completes */
+        }
+
+        /* 行のスタイル */
+        .logo-line {
+            display: block; /* 改行させる */
+            white-space: nowrap; /* 文字の折り返し防止 */
+        }
+
+        /* 1行目（KAGARIBI）のサイズ調整 */
+        .logo-line-1 {
+            font-size: clamp(3rem, 10vw, 8rem); /* レスポンシブ対応 */
+            letter-spacing: 0.05em;
+        }
+
+        /* 2行目（HOKKAIDO 2026）のサイズ調整 */
+        .logo-line-2 {
+            font-size: clamp(1.5rem, 5vw, 4rem); /* 1行目より少し小さく */
+            letter-spacing: 0.15em;
+            color: #e5e7eb; /* 少しだけグレーを混ぜて奥行きを */
+        }
+
+        /* 修正版: 1文字ずつのスタイル */
+        .letter {
+            display: inline-block; /* アニメーションさせるために必須 */
+            font-family: 'Zen Kaku Gothic New', sans-serif; /* Keep original font for letters */
+            font-weight: 900; /* Explicitly set as Zen Kaku Gothic New weight is 900 for logo */
+            color: #ffffff; /* ベースは白 */
+            
+            /* 初期状態（アニメーション前） */
+            opacity: 0;
+            /* filter: blur(10px); /* REMOVED */
+            transform: translateY(40px) scale(0.8); /* NEW initial transform */
+            
+            /* アニメーション適用 */
+            animation: 
+                writeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, /* 出現アニメ */
+                letterGlow 3s ease-in-out infinite; /* 燃焼ループ */
+            
+            /* インデックスに応じた遅延実行（ここで波のような動きを作る） */
+            animation-delay: 
+                calc(var(--index) * 0.05s), /* New delay for writeIn */
+                calc(2.0s + var(--index) * 0.05s); /* New delay for letterGlow */
+            
+            transform-origin: center bottom;
+            will-change: transform, opacity, text-shadow; /* Updated will-change */
+        }
+
+
+        .hero-tagline {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
+            font-size: 1rem; /* Base size */
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-info {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            font-size: 1.3rem;
+            color: #d0d0d0;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: #ffffff;
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            border-radius: 9999px;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* transition background */
+            cursor: pointer;
+            will-change: transform, box-shadow;
+        }
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6), 0 0 40px rgba(255, 165, 81, 0.8);
+            background: linear-gradient(45deg, #ff8c42, #ffa551); /* Brighter gradient on hover */
+        }
+
+        /* Section Headings */
+        .section-heading {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2.5rem; /* Desktop default */
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            line-height: 1.3;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Target Audience Section Title Specifics */
+        .target-section-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2rem; /* Desktop specific for this section, reduced from 2.5rem */
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            line-height: 1.3;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #ff6b35 0%, #ffa551 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Participation Conditions & Target Audience Sections */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(26, 10, 5, 0.8));
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: default;
+            will-change: transform, box-shadow, border-color;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3), 0 0 20px rgba(255, 165, 81, 0.4);
+            border-color: rgba(255, 165, 81, 0.7);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: #ff8c42; /* 明るいオレンジ */
+            margin-bottom: 1rem;
+        }
+        .card-title {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            line-height: 1.3;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .card-description {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.85rem; /* Reduced from 1rem by 3 steps (0.05rem each) */
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        /* Schedule Section */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: rgba(255, 107, 53, 0.3);
+        }
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem 0 1.5rem 2.5rem;
+            margin-bottom: 1.5rem;
+            background-color: rgba(255, 107, 53, 0.05);
+            border-radius: 0.5rem;
+            border-left: 5px solid #ff6b35; /* オレンジレッド */
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            cursor: default;
+            will-change: transform, background-color, border-color;
+        }
+        .timeline-item:hover {
+            transform: translateX(10px);
+            background-color: rgba(255, 107, 53, 0.1);
+            animation: timelineBorderPulse 1s infinite alternate;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.75rem;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #ff8c42;
+            border: 2px solid #0a0a0a;
+        }
+        .timeline-phase {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            line-height: 1.3;
+            color: #ff8c42;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-date {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: #ffa551;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-content {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+        .timeline-content strong {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+        }
+        .timeline-content ul {
+            list-style-type: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+        .timeline-content li {
+            position: relative;
+            padding-left: 1em;
+        }
+        .timeline-content li::before {
+            content: '•';
+            color: #ffa551;
+            position: absolute;
+            left: 0;
+            line-height: inherit;
+        }
+
+        /* Day Flow Section */
+        .day-flow-info {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
+            color: #ff8c42;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .day-flow-schedule {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+        }
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            border-left: 3px solid rgba(255, 107, 53, 0.3);
+            padding-left: 1rem;
+        }
+        .schedule-time {
+            flex-shrink: 0;
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #ffa551;
+            width: 80px;
+            line-height: 1.3;
+        }
+        .schedule-event {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d0d0d;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: #d0d0d0;
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+        }
+        .footer-logo {
+            font-family: 'Zen Kaku Gothic New', sans-serif; /* Changed from Noto Serif JP */
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #ff8c42;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .footer-copyright {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: #777;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 7rem;
+                padding-bottom: 7rem;
+            }
+            .section-heading {
+                font-size: 2.5rem; /* Desktop default from prompt */
+            }
+            .target-section-title { /* Specific size for desktop */
+                font-size: 2rem;
+            }
+            .organizer-pretitle {
+                font-size: 1.4rem;
+            }
+            .logo { /* Desktop for new logo structure */
+                font-size: 4rem;
+            }
+            .hero-info {
+                font-size: 1.4rem;
+            }
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .card-title {
+                font-size: 1.5rem;
+            }
+            .card-description {
+                font-size: 0.85rem; /* Reduced from 1rem by 3 steps */
+            }
+            .day-flow-schedule {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+            }
+            .schedule-item {
+                width: calc(50% - 1rem);
+                border-left: 3px solid rgba(255, 107, 53, 0.3);
+                padding-left: 1rem;
+            }
+            .day-flow-schedule {
+                padding: 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo { /* Larger size for very large screens */
+                font-size: 5rem; 
+            }
+            .section-heading {
+                font-size: 3.5rem;
+            }
+            .card-grid-lg-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .day-flow-schedule .schedule-item {
+                width: calc(33.333% - 1.333rem);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 6rem 0;
+            }
+            
+            /* Mobile flame lightweighting */
+            .fire-layer-1 { filter: blur(25px); }
+            .fire-layer-2 { filter: blur(15px); animation-delay: -0.5s; }
+            .fire-layer-3 { filter: blur(8px); animation-delay: -0.8s; }
+            .fire-glow { filter: blur(30px); }
+            .fire-particles::before, .fire-particles::after {
+                background-image: 
+                    radial-gradient(circle 2px at 15% 90%, rgba(255, 170, 0, 0.8) 0%, transparent 100%),
+                    radial-gradient(circle 1.5px at 48% 88%, rgba(255, 136, 0, 0.7) 0%, transparent 100%),
+                    radial-gradient(circle 2px at 78% 86%, rgba(255, 170, 0, 0.75) 0%, transparent 100%);
+            }
+            @keyframes particles-rise {
+                0% { transform: translateY(0) scale(1); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 0.3; }
+                100% { transform: translateY(-300px) scale(0.5); opacity: 0; } /* Smaller rise for mobile */
+            }
+
+            .organizer-pretitle {
+                font-size: 1.1rem;
+            }
+            .logo { /* Mobile for new logo structure */
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            .letter {
+                animation-delay: calc(var(--index) * 0.08s); /* Faster for mobile */
+            }
+            .hero-tagline {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+            .hero-info {
+                font-size: 1.1rem;
+                margin-top: 1rem;
+                line-height: 1.5;
+            }
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            .section-heading {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            .target-section-title { /* Specific size for mobile */
+                font-size: 1.7rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-title {
+                font-size: 1.3rem;
+            }
+            .card-description {
+                font-size: 0.8rem; /* Reduced from 0.95rem by 3 steps (0.05rem each) */
+            }
+            .timeline-item {
+                padding: 1rem 0 1rem 2rem;
+                margin-bottom: 1rem;
+            }
+            .timeline-item::before {
+                left: -0.6rem;
+                top: 1.5rem;
+                width: 12px;
+                height: 12px;
+            }
+            .timeline-phase {
+                font-size: 1.2rem;
+            }
+            .timeline-date, .timeline-content {
+                font-size: 0.95rem;
+            }
+            .day-flow-info {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            .day-flow-schedule {
+                gap: 1rem;
+            }
+            .schedule-time {
+                font-size: 1rem;
+                width: 70px;
+            }
+            .schedule-event {
+                font-size: 0.95rem;
+            }
+            .footer-logo {
+                font-size: 1.3rem;
+            }
+            .footer-copyright {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/"
+  }
+}
+</script>
+</head>
+<body>
+    <header>
+        <!-- ナビゲーションは単一HTMLの要件とシンプルなLPのため非実装 -->
+    </header>
+
+    <main>
+        <!-- ヒーローセクション -->
+        <section id="hero" class="hero">
+            <div class="fire-container">
+                <div class="fire-layer fire-layer-1"></div>
+                <div class="fire-layer fire-layer-2"></div>
+                <div class="fire-layer fire-layer-3"></div>
+                <div class="fire-particles"></div>
+                <div class="fire-glow"></div>
+            </div>
+            <div class="hero-content">
+                <p class="organizer-pretitle">NPO法人 燈-TOMOSHIBI- 主催</p>
+                <h1 class="logo">
+                    <span class="logo-line logo-line-1">
+                        <span class="letter" style="--index: 0">K</span>
+                        <span class="letter" style="--index: 1">A</span>
+                        <span class="letter" style="--index: 2">G</span>
+                        <span class="letter" style="--index: 3">A</span>
+                        <span class="letter" style="--index: 4">R</span>
+                        <span class="letter" style="--index: 5">I</span>
+                        <span class="letter" style="--index: 6">B</span>
+                        <span class="letter" style="--index: 7">I</span>
+                    </span>
+                    <br>
+                    <span class="logo-line logo-line-2">
+                        <span class="letter" style="--index: 8">H</span>
+                        <span class="letter" style="--index: 9">O</span>
+                        <span class="letter" style="--index: 10">K</span>
+                        <span class="letter" style="--index: 11">K</span>
+                        <span class="letter" style="--index: 12">A</span>
+                        <span class="letter" style="--index: 13">I</span>
+                        <span class="letter" style="--index: 14">D</span>
+                        <span class="letter" style="--index: 15">O</span>
+                        <span class="letter" style="--index: 16"> </span>
+                        <span class="letter" style="--index: 17">2</span>
+                        <span class="letter" style="--index: 18">0</span>
+                        <span class="letter" style="--index: 19">2</span>
+                        <span class="letter" style="--index: 20">6</span>
+                    </span>
+                </h1>
+                
+                <!-- NEW: Countdown Container -->
+                <div class="countdown-container">
+                    <p class="countdown-title">IGNITION IN</p>
+                    <div class="countdown-timer">
+                        <div class="time-box">
+                            <span id="days" class="time-number">000</span>
+                            <span class="time-label">DAYS</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-box">
+                            <span id="hours" class="time-number">00</span>
+                            <span class="time-label">HOURS</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-box">
+                            <span id="minutes" class="time-number">00</span>
+                            <span class="time-label">MINS</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-box">
+                            <span id="seconds" class="time-number">00</span>
+                            <span class="time-label">SECS</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- END NEW: Countdown Container -->
+
+                <div class="hero-info">
+                    <p>日時：2026年3月20日（金・祝）</p>
+                    <p>会場：CLUB SANGO SAPPORO by Riviera</p>
+                    <p>アクセス：札幌市営地下鉄 南北線 すすきの駅より徒歩約5分</p>
+                </div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScP5BJ-38ADXfa8lyHeVo2ToqRfpiJIpQYsOtMemFBlJPDfIg/viewform?usp=header"
+                   class="cta-button" target="_blank" rel="noopener noreferrer">
+                    参加申し込み
+                </a>
+            </div>
+        </section>
+
+        <!-- 参加条件セクション -->
+        <section id="conditions" class="section-padding">
+            <div class="container">
+                <h2 class="section-heading">参加条件</h2>
+                <div class="card-grid card-grid-lg-3">
+                    <div class="card">
+                        <div class="card-icon">👥</div>
+                        <h3 class="card-title">団体要件</h3>
+                        <p class="card-description">部活・サークル・非公認学生団体として活動している3人以上の団体</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📅</div>
+                        <h3 class="card-title">ミーティング参加</h3>
+                        <p class="card-description">週に一度のミーティングに参加できる団体（2回欠席した場合、欠場となります）</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📱</div>
+                        <h3 class="card-title">LINE登録</h3>
+                        <p class="card-description">公式LINEに3人以上登録していること</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📍</div>
+                        <h3 class="card-title">活動地域</h3>
+                        <p class="card-description">北海道内で活動していること</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">✅</div>
+                        <h3 class="card-title">本戦参加必須</h3>
+                        <p class="card-description">予選通過の可否にかかわらず3月20日 13:00-16:00に参加可能な団体（3人以上）</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 開催スケジュールセクション -->
+        <section id="schedule" class="section-padding">
+            <div class="container">
+                <h2 class="section-heading">開催スケジュール</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-phase">フェーズ1：エントリー受付</div>
+                        <p class="timeline-date">募集開始：12月8日 ｜ 募集締切：1月31日</p>
+                        <p class="timeline-content">Googleフォーム申し込み + 公式LINE追加でエントリー完了</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-phase">フェーズ2：予選（動画審査）</div>
+                        <p class="timeline-date">動画提出期間：2月1日〜2月27日（金）</p>
+                        <p class="timeline-content">5分間の動画を提出</p>
+                        <p class="timeline-content"><strong>動画ガイドライン（詳細な時系列構成）：</strong></p>
+                        <ul>
+                            <li>0:00-0:30 掴み・結論（評価軸：C 熱量）</li>
+                            <li>0:30-1:30 課題設定と背景（評価軸：A 課題設定）</li>
+                            <li>1:30-2:30 困難と改善のリアリティ（評価軸：A 再現性）</li>
+                            <li>2:30-3:30 組織運営と継承力（評価軸：B 組織運営）</li>
+                            <li>3:30-4:30 成果の定量化と影響力（評価軸：A、C 定量化）</li>
+                            <li>4:30-5:00 まとめと未来（評価軸：C 熱意）</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-phase">本戦出場者発表</div>
+                        <p class="timeline-date">3月6日</p>
+                        <p class="timeline-content">予選結果発表</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-phase">本戦開催</div>
+                        <p class="timeline-date">3月20日（金・祝）</p>
+                        <p class="timeline-content">CLUB SANGO SAPPOROにて本戦ピッチ＆交流会を開催</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 当日の流れセクション -->
+        <section id="day-flow" class="section-padding">
+            <div class="container">
+                <h2 class="section-heading">当日の流れ</h2>
+                <p class="day-flow-info">参加費：1,000円（ドリンク1杯無料、軽食あり）</p>
+                <div class="day-flow-schedule">
+                    <div class="schedule-item">
+                        <span class="schedule-time">12:30</span>
+                        <span class="schedule-event">受付開始</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">13:00</span>
+                        <span class="schedule-event">開場（2分前カウントダウン）</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">13:10</span>
+                        <span class="schedule-event">オープニング</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">13:20</span>
+                        <span class="schedule-event">ピッチ開始（前半）6分×4団体</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">13:45</span>
+                        <span class="schedule-event">休憩（10分）</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">13:55</span>
+                        <span class="schedule-event">ピッチ開始（後半）6分×4団体</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">14:20</span>
+                        <span class="schedule-event">休憩（10分）</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">14:30</span>
+                        <span class="schedule-event">SANGOさん紹介 + NPO紹介タイム（5分）</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">14:35</span>
+                        <span class="schedule-event">審査結果発表＋表彰</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">14:50</span>
+                        <span class="schedule-event">休憩（10分）</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">15:00</span>
+                        <span class="schedule-event">懇親会</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">16:00</span>
+                        <span class="schedule-event">終了のお知らせ</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">17:00</span>
+                        <span class="schedule-event">完全撤退</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 対象者セクション -->
+        <section id="target-audience" class="section-padding">
+            <div class="container">
+                <h2 class="target-section-title">こんな団体を待っています</h2>
+                <div class="card-grid card-grid-lg-3">
+                    <div class="card">
+                        <div class="card-icon">🎓</div>
+                        <h3 class="card-title">学生</h3>
+                        <p class="card-description">北海道在住の高校生・大学生・専門学生。自分の可能性を広げたいあなたへ。</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔥</div>
+                        <h3 class="card-title">挑戦者</h3>
+                        <p class="card-description">現状を変えたい、何かに挑戦したいと思っている若者。その情熱を分かち合いましょう。</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🤝</div>
+                        <h3 class="card-title">応援者</h3>
+                        <p class="card-description">若者の夢を応援したい企業・社会人の方々。次世代を一緒に育てませんか。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">NPO法人 燈-Tomoshibi-</div>
+        <p class="footer-copyright">© <span id="current-year"></span> NPO法人 燈-Tomoshibi- All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links (if any were added)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dynamically set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // カウントダウンタイマー設定
+        const eventDate = new Date("2026-03-20T13:00:00").getTime();
+
+        const countdownTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            // 計算
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // HTMLへの反映（IDを取得して書き換え）
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+
+            // 要素が存在する場合のみ実行（エラー防止）
+            if (daysEl && hoursEl && minutesEl && secondsEl) {
+                if (distance > 0) {
+                    daysEl.innerText = String(days).padStart(3, '0'); // 日付は3桁
+                    hoursEl.innerText = String(hours).padStart(2, '0');
+                    minutesEl.innerText = String(minutes).padStart(2, '0');
+                    secondsEl.innerText = String(seconds).padStart(2, '0');
+                } else {
+                    clearInterval(countdownTimer);
+                    const countdownContainer = document.querySelector(".countdown-timer");
+                    if (countdownContainer) {
+                        countdownContainer.innerHTML = "<div class='time-number' style='font-size: 2rem; color: #ffa551; text-shadow: none;'>IGNITION STARTED!</div>";
+                    }
+                }
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
